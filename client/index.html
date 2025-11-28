@@ -1,5 +1,29 @@
-<h1>Hoila</h1>
-<script src="/socket.io/socket.io.js"></script>
-<script>
-  const socket = io();
-</script>
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web RTC</title>
+</head>
+<body>
+  <div id="nameModal" class="nameContent">
+    <form id="nameForm">
+      <input type="text" id="nameInput" name="name" placeholder="Introduiex el teu nom" required maxlength="20">
+      <button id="joinBtn" type="submit">Unir-se</button>
+    </form>
+  </div>
+  
+  <div id="app" class="lobby" style="display: none;">
+    <h2>Sala d'espera</h2>
+    <hr>
+    <span id="userCount">Usuaris connectats:</span>
+    <ul id="userList"></ul>
+    <span id="currentUser"></span>
+    <button id="startXatBtn" disabled>Començar el xat</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/simple-peer@9.11.1/simplepeer.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

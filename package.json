@@ -1,6 +1,10 @@
 {
   "dependencies": {
     "express": "^5.1.0",
+    "simple-peer": "^9.11.1",
     "socket.io": "^4.8.1"
+  },
+  "scripts": {
+    "start": "node server.js"
   }
 }

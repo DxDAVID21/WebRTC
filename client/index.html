@@ -19,11 +19,21 @@
     <span id="userCount">Usuaris connectats:</span>
     <ul id="userList"></ul>
     <span id="currentUser"></span>
+    <br>
     <button id="startXatBtn" disabled>Començar el xat</button>
+  </div>
+
+  <div id="chat" style="display: none;">
+    <h2>Chat P2P</h2>
+
+    <div id="messages" class="messages"></div>
+
+    <textarea name="missatge" id="msgInput" rows="6" cols="50"></textarea>
+    <button id="sendBtn">Enviar</button>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/simple-peer@9.11.1/simplepeer.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
-  <script src="script.js"></script>
+  <script src="script.js"></script>   
 </body>
 </html>

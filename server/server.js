@@ -4,20 +4,16 @@ const http = require('http');
 const path = require('path');
 
 const app = express();
+const server = http.createServer(app);
+const io = new Server(server);
 const port = 3000;
 
 app.use(express.static(path.join(__dirname, '..', 'client')));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-const server =  http.createServer(app);
-const io = new Server(server);
-
 
 const users = new Map();
 
 io.on('connection', (socket) => {
-  console.log('New client connected:', socket.id);  
+  console.log('Connected:', socket.id);  
 
   socket.on('user-joined', (name) => {
     const user ={ id: socket.id, name: name };
@@ -42,8 +38,12 @@ io.on('connection', (socket) => {
     }
   });
 
-  socket.on('signal')
-
+  socket.on('signal', data => {
+    io.to(data.target).emit('signal', {
+      from: data.from,
+      signal: data.signal
+    });
+  });
   
 });
 
@@ -54,5 +54,5 @@ app.get('/', (req, res) => {
 
 
 server.listen(port, () => {
-  console.log('server running at http://localhost:3000');
+  console.log(`server running at http://localhost:${port}`);
 });
